@@ -10,12 +10,13 @@ class Target < ISM::Software
     def configure
         super
 
-        configureSource([   "--prefix=/usr",
-                            "--sysconfdir=/etc",
-                            "--localstatedir=/var",
-                            "--disable-static",
-                            "--with-app-defaults=/etc/X11/app-defaults"],
-                            buildDirectoryPath)
+        configureSource(arguments: ["--prefix=/usr",
+                                    "--sysconfdir=/etc",
+                                    "--localstatedir=/var",
+                                    "--disable-static",
+                                    "--with-app-defaults=/etc/X11/app-defaults"],
+                        path: buildDirectoryPath,
+                        environment: {"TERMINFO" => "/usr/share/terminfo"})
     end
     
     def build
