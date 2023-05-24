@@ -5,9 +5,6 @@
   "architectures": ["x86_64"],
   "description": "Terminal emulator for the X Window System",
   "website": "https://invisible-island.net/xterm/",
-  "downloadLinks": ["https://invisible-mirror.net/archives/xterm/xterm-368.tgz"],
-  "md5sums": ["3a4126006085ff22f4c73f716a9a03a7"],
-  "patchesLinks": [],
   "installedFiles": [],
   "dependencies": [
     {
