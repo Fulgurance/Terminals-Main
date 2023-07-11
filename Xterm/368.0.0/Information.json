@@ -2,7 +2,9 @@
   "port": "Terminals-Main",
   "name": "Xterm",
   "version": "368.0.0",
-  "architectures": ["x86_64"],
+  "architectures": [
+    "x86_64"
+  ],
   "description": "Terminal emulator for the X Window System",
   "website": "https://invisible-island.net/xterm/",
   "installedFiles": [],
