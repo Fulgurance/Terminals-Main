@@ -31,8 +31,8 @@ class Target < ISM::Software
         makeSource(["DESTDIR=#{builtSoftwareDirectoryPath}#{Ism.settings.rootPath}","install"],buildDirectoryPath)
         makeSource(["DESTDIR=#{builtSoftwareDirectoryPath}#{Ism.settings.rootPath}","install-ti"],buildDirectoryPath)
 
-        makeDirectory("#{builtSoftwareDirectoryPath(false)}#{Ism.settings.rootPath}usr/share/applications")
-        copyFile(Dir["#{buildDirectoryPath(false)}*.desktop"],"#{builtSoftwareDirectoryPath(false)}#{Ism.settings.rootPath}usr/share/applications/")
+        makeDirectory("#{builtSoftwareDirectoryPath}#{Ism.settings.rootPath}usr/share/applications")
+        copyFile(Dir["#{buildDirectoryPath}*.desktop"],"#{builtSoftwareDirectoryPath}#{Ism.settings.rootPath}usr/share/applications/")
     end
 
 end
