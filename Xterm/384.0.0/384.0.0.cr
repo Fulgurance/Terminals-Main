@@ -3,20 +3,24 @@ class Target < ISM::Software
     def prepare
         super
 
-        fileReplaceText("#{buildDirectoryPath}/termcap",":tc=xterm-new:",":tc=xterm-new:kb=^?:")
-        fileAppendData("#{buildDirectoryPath}/terminfo","\tkbs=\\177,")
+        fileReplaceText(path:       "#{buildDirectoryPath}/termcap",
+                        text:       ":tc=xterm-new:",
+                        newText:    ":tc=xterm-new:kb=^?:")
+
+        fileAppendData( path:   "#{buildDirectoryPath}/terminfo",
+                        data:   "\tkbs=\\177,")
     end
 
     def configure
         super
 
-        configureSource(arguments: ["--prefix=/usr",
-                                    "--sysconfdir=/etc",
-                                    "--localstatedir=/var",
-                                    "--disable-static",
-                                    "--with-app-defaults=/etc/X11/app-defaults"],
-                        path: buildDirectoryPath,
-                        environment: {"TERMINFO" => "/usr/share/terminfo"})
+        configureSource(arguments:      "--prefix=/usr          \
+                                        --sysconfdir=/etc       \
+                                        --localstatedir=/var    \
+                                        --disable-static        \
+                                        --with-app-defaults=/etc/X11/app-defaults",
+                        path:           buildDirectoryPath,
+                        environment:    {"TERMINFO" => "/usr/share/terminfo"})
     end
     
     def build
@@ -28,11 +32,16 @@ class Target < ISM::Software
     def prepareInstallation
         super
 
-        makeSource(["DESTDIR=#{builtSoftwareDirectoryPath}#{Ism.settings.rootPath}","install"],buildDirectoryPath)
-        makeSource(["DESTDIR=#{builtSoftwareDirectoryPath}#{Ism.settings.rootPath}","install-ti"],buildDirectoryPath)
+        makeSource( arguments:  "DESTDIR=#{builtSoftwareDirectoryPath}#{Ism.settings.rootPath} install",
+                    path:       buildDirectoryPath)
+
+        makeSource( arguments:  "DESTDIR=#{builtSoftwareDirectoryPath}#{Ism.settings.rootPath} install-ti",
+                    path:       buildDirectoryPath)
 
         makeDirectory("#{builtSoftwareDirectoryPath}#{Ism.settings.rootPath}usr/share/applications")
-        copyFile("#{buildDirectoryPath}*.desktop","#{builtSoftwareDirectoryPath}#{Ism.settings.rootPath}usr/share/applications/")
+
+        copyFile(   "#{buildDirectoryPath}*.desktop",
+                    "#{builtSoftwareDirectoryPath}#{Ism.settings.rootPath}usr/share/applications/")
     end
 
 end
