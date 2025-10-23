@@ -1,0 +1,47 @@
+PORT
+    Terminals-Main
+NAME
+    Xterm
+VERSION
+    395.0.0
+ARCHITECTURES
+    x86_64
+DESCRIPTION
+    Terminal emulator for the X Window System
+WEBSITE
+    https://invisible-island.net/xterm/
+DEPENDENCIES
+        @XorgBase-Main:Xorg-Applications>=21.1.8
+KERNELDEPENDENCIES
+OPTIONS
+    name: Emacs
+    description: Enable emacs support
+    active: false
+    dependencies:
+        @TextEditors-Main:Emacs>=29.1.0
+    kernelDependencies:
+
+    name: Pcre
+    description: Enable pcre support
+    active: false
+    dependencies:
+        @BaseLibraries-Main:Pcre>=8.45.0
+    kernelDependencies:
+
+    name: Pcre2
+    description: Enable pcre2 support
+    active: false
+    dependencies:
+        @BaseLibraries-Main:Pcre2>=10.42.0
+    kernelDependencies:
+
+    name: Valgrind
+    description: Enable valgrind support
+    active: false
+    dependencies:
+        @Utilities-Main:Valgrind>=3.21.0
+    kernelDependencies:
+
+UNIQUEDEPENDENCIES
+UNIQUEOPTIONS
+ALLOWCODEPENDENCIES
